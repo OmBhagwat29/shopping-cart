@@ -1,0 +1,116 @@
+.checkout{
+    width: 95%;
+    margin: auto;
+}
+.checkout .products__table{
+    width: 70%;
+    text-align: left;
+    background-color: #fff;
+    float: left;
+}
+
+.checkout .products__table--head th{
+    background-color: #f2f2f2;
+    padding: 20px !important;
+}
+
+.checkout .products__table--body td{
+    padding: 20px;
+}
+
+.checkout .products__table--body .remove{
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.checkout .products__table--image{
+    display: flex;
+}
+
+.checkout .products__table--image p{
+    margin-top: 15px;
+    margin-left: 20px;
+}
+.checkout .products__table--image img{
+    width: 50px;
+    height: 50px;
+}
+
+.checkout__total{
+    width: 30%;
+    background-color: #fff;
+    border: 2px solid #e6e6e6;
+    padding: 20px;
+    float: right;
+    font-weight: 400 !important;
+}
+
+.checkout__total h1{
+    font-weight: 400 !important;
+    font-size: 25px;
+}
+
+.checkout__total span{
+    float: right;
+    opacity: 50%;
+    font-weight: 400 !important;
+}
+
+.checkout__total h3{
+    margin: 20px 0;
+}
+
+.checkout__total h2{
+    margin: 20px 0;
+}
+.checkout .products__table--quantity{
+    text-align: center;
+}
+.checkout .products__table--quantity button{
+    background-color: #fff;
+    border: 2px solid #f2f2f2;
+    cursor: pointer;
+    
+}
+
+.checkout .products__table--quantity .btn-left{
+    border-radius: 20px 0 0 20px;
+}
+
+.checkout .products__table--quantity .btn-right{
+    border-radius: 0 20px 20px 0;
+}
+
+.checkout .products__table--quantity button, .checkout .products__table--quantity input{
+    padding: 5px;
+    font-size: 18px;
+}
+
+.checkout .products__table--quantity input{
+    width: 50px;
+    border: 2px solid #f2f2f2;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+}
+
+.checkout__total button{
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+@media (max-width: 770px){
+    .checkout .products__table{
+        width: 100%;
+        float: none;
+    }
+
+    .checkout__total{
+        width: 80%;
+        float: none;
+        margin: auto;
+    }
+}
