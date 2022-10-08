@@ -42,7 +42,7 @@ function Header({getCart, getItemFilter, getSizeFilter, getClearFilter, getSearc
                 <option value="XL">XL</option>
                 <option value="XXL">XXL</option>
             </select>
-            <button onClick={clearFilter} className='header__section--clear-btn'><i class="fa fa-refresh" aria-hidden="true"></i> Reset</button>
+            <button onClick={clearFilter} className='header__section--clear-btn'><i className="fa fa-refresh" aria-hidden="true"></i> Reset</button>
         </div>
         <div className="header__section header__section2">
             <label htmlFor="search">Search: </label>

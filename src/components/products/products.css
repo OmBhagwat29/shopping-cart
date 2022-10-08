@@ -47,12 +47,19 @@
     color: #fff;
     padding: 0 20px;
     font-size: 20px;
+    cursor: pointer;
 }
 
 .products__table--operations .cart-disabled{
     opacity: 50%;
 }
 
+.products__table--body .presentInCart{
+    text-align: center;
+    color: green;
+    font-size: 25px;
+    background-color: rgb(0, 153, 51, 0.03);
+}
 
 @media (max-width: 740px){
     .products{

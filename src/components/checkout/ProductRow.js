@@ -7,6 +7,7 @@ function ProductRow({id, image, name, color, stock, price, quantity, getTotal}) 
   getTotal(price*quan);
   const [{cart}, dispatch] = useStateValue();
 
+
   const removeFromCart = () => {
     dispatch({
       type: 'REMOVE_FROM_CART',
@@ -27,9 +28,9 @@ function ProductRow({id, image, name, color, stock, price, quantity, getTotal}) 
                 </td>
                 <td>$ {price}</td>
                 <td className='products__table--quantity'>
-                  <button className='btn-left' onClick={()=> {setQuan((+quan)+1)}}>+</button>
+                  <button className='btn-left' onClick={()=> {quan<=quantity ? setQuan((+quan)+1) : setQuan((+quan));}}>+</button>
                   <input type="text" value={quan} onChange={(e) => {setQuan(e.target.value)}}/>
-                  <button className='btn-right' onClick={()=> {setQuan((+quan)-1)}}>-</button>
+                  <button className='btn-right' onClick={()=> {quan>0 ? setQuan((+quan)-1) : setQuan((+quan))}}>-</button>
                 </td>
                 <td>$ {price*quan}</td>
                 

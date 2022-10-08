@@ -25,6 +25,12 @@ const reducer = (state, action) => {
             return{
                 ...state, cart: newCart
             }
+        
+            case 'REFRESH':
+                return{
+                    ...state,
+                    cart: []
+                }
 
 
         default:

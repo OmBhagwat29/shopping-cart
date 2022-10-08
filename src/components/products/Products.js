@@ -61,6 +61,14 @@ function Products({cartBtn, getCart, itemFilter, sizeFilter, clearFilter, search
     }
    }, [clearFilter])
    
+   useEffect(() => {
+    window.onload = function() {
+        if(!window.location.hash) {
+            window.location = window.location + '#loaded';
+            window.location.reload();
+        }
+    }
+   }, [])
    
    
 
@@ -98,6 +106,7 @@ function Products({cartBtn, getCart, itemFilter, sizeFilter, clearFilter, search
   return (
     <div className='products'>
         <table className='products__table'>
+            <thead>
             <tr className='products__table--head'>
                 <th>image</th>
                 <th>name</th>
@@ -106,9 +115,12 @@ function Products({cartBtn, getCart, itemFilter, sizeFilter, clearFilter, search
                 <th>price</th>
                 <th>buy</th>
             </tr>
+            </thead>
+            <tbody>
             {products.map((e) => {
                 return(
                     <ProductRow 
+                        key={e.id}
                         id = {e.id}
                         image={e.image}
                         name={e.name}
@@ -120,7 +132,7 @@ function Products({cartBtn, getCart, itemFilter, sizeFilter, clearFilter, search
                         />
                 )
             })}
-           
+           </tbody>
         </table>
     </div>
   )

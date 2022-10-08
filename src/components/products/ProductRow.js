@@ -6,8 +6,10 @@ function ProductRow({ id, image, name, color, stock, price, available_quantity, 
 
     const [{cart}, dispatch] = useStateValue();
     const [quantity, setQuantity] = useState(1);
-    const[instock, setInstock] = useState(0);
-
+    const [instock, setInstock] = useState(0);
+    const [alreadyInCart, setAlreadyInCart] = useState(0);
+    
+        
 
     useEffect(() => {
         if(available_quantity-quantity < 1){
@@ -44,22 +46,34 @@ function ProductRow({ id, image, name, color, stock, price, available_quantity, 
     }
 
 
-
     const addToCart = () => {
-         dispatch({
-            type: 'ADD_TO_CART',
-            item: {
-                id:id,
-                image: image,
-                name: name,
-                color: color,
-                stock: stock, 
-                price:price,
-                quantity: quantity
+       
 
-            }
-         })
+        if(!alreadyInCart){
+            dispatch({
+                type: 'ADD_TO_CART',
+                item: {
+                    id:id,
+                    image: image,
+                    name: name,
+                    color: color,
+                    stock: stock, 
+                    price:price,
+                    quantity: quantity
+    
+                }
+             })
+        }
+         
     }
+        useEffect(() => {
+            cart.map((item) => {
+                if(item.id==id){
+                    setAlreadyInCart(1)
+                }
+            })
+        }, [addToCart])
+    
 
 
 
@@ -73,29 +87,30 @@ function ProductRow({ id, image, name, color, stock, price, available_quantity, 
         <td>
             { instock ? 
                 <span className='in-stock'>
-                <i class="fa fa-smile-o" aria-hidden="true"></i> in stock
+                <i className="fa fa-smile-o" aria-hidden="true"></i> in stock
                 </span> : 
                 <span className='out-stock'>
-            <i class="fa fa-frown-o" aria-hidden="true"></i> out of stock
+            <i className="fa fa-frown-o" aria-hidden="true"></i> out of stock
             </span>
                 }
             
         </td>
         <td>$ { price }</td>
+        {
+            alreadyInCart ? <td className='presentInCart'><i className="fa fa-shopping-cart"></i></td> :
         <td className='products__table--operations'>
             <input type="number" value={quantity} onChange={(e) => {setQuantity(e.target.value)}} className='quantity'/>
             { instock ? 
-            <button className='cart' onClick={addToCart}><i class="fa fa-shopping-cart"></i></button> :
-            <button className='cart cart-disabled' disabled onClick={addToCart}><i class="fa fa-shopping-cart"></i></button>
+            <button className='cart' onClick={addToCart}><i className="fa fa-shopping-cart"></i></button> :
+            <button className='cart cart-disabled' disabled onClick={addToCart}><i className="fa fa-shopping-cart"></i></button>
             }
-
             {
-                instock ? <input type="checkbox" onChange={cartChecked} /> : 
+                instock && !alreadyInCart ? <input type="checkbox" onChange={cartChecked} /> : 
                 <input type="checkbox" disabled onChange={cartChecked} name="" id="" />
             }
-
-            
         </td>
+        }
+        
     </tr>
   )
 }

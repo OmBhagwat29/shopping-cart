@@ -18,6 +18,7 @@ function Checkout() {
         }   
     }
 
+    
 
 
 
@@ -25,6 +26,7 @@ function Checkout() {
   return (
     <div className='checkout'>
         <table className='products__table'>
+            <thead>
             <tr className='products__table--head'>
                 <th></th>
                 <th>product</th>
@@ -32,11 +34,14 @@ function Checkout() {
                 <th>quantity</th>
                 <th>subtotal</th>
             </tr>
+            </thead>
+            <tbody>
             {
 
                 cart.map((e) => {
                     return(
                         <ProductRow 
+                            key={e.id}
                             id={e.id}
                             image={e.image}
                             name={e.name}
@@ -49,6 +54,7 @@ function Checkout() {
                     )
                 })
             }
+            </tbody>
         </table>
         <div className="checkout__total">
             <h1>Cart total</h1>

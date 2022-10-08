@@ -114,3 +114,15 @@
         margin: auto;
     }
 }
+
+@media (max-width: 1000px){
+    .checkout .products__table--quantity{
+        width: 300px;
+    }
+}
+
+@media (max-width: 590){
+    .checkout .products__table--quantity{
+        width: 300px;
+    }
+}
